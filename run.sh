@@ -1,2 +1,2 @@
 
-docker exec -it -u 1000:1000  digipro-exercise-digipoapp-1 bash
+docker exec -it -u $(id -u):$(id -g)  digipro-exercise-digipoapp-1 bash

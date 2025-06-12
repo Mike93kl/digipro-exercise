@@ -7,7 +7,6 @@ use Livewire\Component;
 class UserInfoPage extends Component
 {
 
-    public array $errors = [];
 
     public string $fullName = '';
 
@@ -19,10 +18,29 @@ class UserInfoPage extends Component
 
     public string $type = '';
 
+    public array $rules = [
+        'fullName' => ['required', 'string'],
+        'email' => ['required', 'string', 'email'],
+        'numberOfQuestions' => ['required', 'int', 'min:1', 'max:50'],
+        'difficulty' => ['required', 'in:easy,medium,hard'],
+        'type' => ['required', 'in:multiple,boolean']
+    ];
 
-    public function yo()
+    public function mount(): void
     {
-        dd($this->fullName);
+        $this->fullName = '';
+        $this->email = '';
+        $this->numberOfQuestions = 1;
+        $this->difficulty = '';
+        $this->type = '';
+        session()->forget('searchKey');
+    }
+
+    public function submit(): void
+    {
+        $data = $this->validate();
+
+        redirect()->route('quiz.index', $data);
     }
 
     public function render()
