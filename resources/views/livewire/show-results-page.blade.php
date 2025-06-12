@@ -42,7 +42,7 @@
                 </div>
             </div>
             @if($question['correct'])
-                <div class="flex items-center gap-4 bg-slate-50 px-4 min-h-14">
+                <div class="flex items-center gap-4 bg-green-100 px-4 min-h-14">
                     <div class="text-[#0d141c] flex items-center justify-center rounded-lg bg-[#e7edf4] shrink-0 size-10" data-icon="Check" data-size="24px" data-weight="regular">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
                             <path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path>
@@ -50,8 +50,9 @@
                     </div>
                     <p class="text-[#0d141c] text-base font-normal leading-normal flex-1 truncate">Correct</p>
                 </div>
+
             @else
-                <div class="flex items-center gap-4 bg-slate-50 px-4 min-h-14">
+                <div class="flex items-center gap-4 bg-red-50 px-4 min-h-14">
                     <div class="text-[#0d141c] flex items-center justify-center rounded-lg bg-[#e7edf4] shrink-0 size-10" data-icon="X" data-size="24px" data-weight="regular">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
                             <path
