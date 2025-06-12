@@ -32,7 +32,7 @@ class PlayQuiz extends Component
 
     private $lastApicall = null;
 
-    private ?SearchHistory $searchHistory = null;
+    public ?string $errorFlashMessage = null;
 
     public function mount(Request $request): void
     {
@@ -226,11 +226,16 @@ class PlayQuiz extends Component
         $allAnswered = collect($this->questions)->filter(fn(array $q) => empty($q['submitted_answer'] ?? 0))->isEmpty();
 
         if (!$allAnswered) {
-            session()->flash('error', 'Please complete all the answers first');
+            $this->errorFlashMessage = 'Please complete all the answers first';
             return;
         }
 
         redirect()->route('quiz.show', ['searchKey' => session()->get('searchKey', '')]);
 
+    }
+
+    public function resetErrorMsg(): void
+    {
+        $this->errorFlashMessage = null;
     }
 }

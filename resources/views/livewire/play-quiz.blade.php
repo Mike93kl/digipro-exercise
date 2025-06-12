@@ -2,7 +2,29 @@
 
 <div class="px-40 flex flex-1 justify-center py-5">
 
+
+
+
     <div class="layout-content-container flex flex-col w-[512px] max-w-[512px] py-5 max-w-[960px] flex-1">
+
+        @if ($errorFlashMessage)
+            <div
+                x-data="{show: true}"
+                x-show="show"
+                x-init="setTimeout(() => $wire.resetErrorMsg(), 5000)"
+                id="error-msg"
+                class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                role="alert">
+
+                <span class="block sm:inline">{{$errorFlashMessage }}</span>
+                <span
+                    class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer"
+                    id="close-error-msg"
+                >
+
+        </span>
+            </div>
+        @endif
 
         <div class="flex px-4 py-3 justify-center">
             <button
@@ -35,8 +57,8 @@
                 return;
             }
 
-            const random = Math.floor(Math.random() * options.answers.length);
-            selected = options.answers[random];
+
+            selected = '';
         })()
     "
         >
@@ -84,3 +106,6 @@
 
     </div>
 </div>
+
+
+
